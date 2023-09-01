@@ -6,7 +6,7 @@ const handleCatagory = async() => {
     data.data.forEach((category) => {
        const div = document.createElement('div');
        div.innerHTML = `
-       <button onclick="handleLoadVideos('${category.category_id}')" class="btn  bg-[#25252533] focus:outline-none focus:ring focus:bg-[#FF1F3D] focus:text-white focus:ring-[#FF1F3D]  text-[#252525] font-medium text-lg normal-case rounded-[4px]">${category.category}</button>
+       <button onclick="handleLoadVideos('${category.category_id}')" class="btn  bg-[#25252533] focus:outline-none focus:ring focus:bg-[#FF1F3D] focus:text-white focus:ring-[#FF1F3D]  text-[#252525] font-medium text-lg normal-case rounded-[4px] mb-10">${category.category}</button>
        `;
        tabContainer.appendChild(div);
        
@@ -23,7 +23,7 @@ const handleCatagory = async() => {
     const noVideoDiv = document.createElement('div');
     noVideoDiv.innerHTML = `
     
-        <div class="grid grid-cols-1 col-span-4 justify-center items-center">
+        <div class="grid grid-cols-1 col-span-4 justify-center items-center mt-20">
         <figure>
         <img class="mx-auto" src="./images/Icon.png" alt="">
         <figcaption>
