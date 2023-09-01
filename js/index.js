@@ -47,7 +47,7 @@ const handleCatagory = async() => {
         const hour = Math.floor(postedTime/3600);
         const min = Math.floor((postedTime%3600) / 60);
         div.innerHTML = `
-        <div class="card bg-base-100 shadow-xl">
+        <div class="card bg-base-100 shadow-xl" data-views="${videos.others?.views || 0}">
                     <figure class="relative"><img class="h-[200px] w-full" src="${videos.thumbnail}" alt="Shoes" />
                     ${videos.others?.posted_date ? `<div class="bg-[#171717] absolute bottom-3 right-3 rounded-[4px]">
                     <p class="text-white text-[10px] p-1">${hour} hr ${min} min ago</p>
@@ -86,5 +86,27 @@ const handleCatagory = async() => {
 
 
    }
+
+   const sortVideos = () => {
+
+    const cardContainer = document.getElementById('card-container');
+    const cardElement = cardContainer.querySelectorAll('.card');
+    const cardsArray = [];
+    for(const card of cardElement){
+        cardsArray.push(card);
+    }
+    cardsArray.sort((a,b)=>{
+        const views1 = parseInt(a.getAttribute('data-views')) || 0;
+        const views2 = parseInt(b.getAttribute('data-views')) || 0;
+        return views2 - views1;
+    });
+    cardContainer.innerHTML = '';
+    for(const card of cardsArray){
+        cardContainer.appendChild(card);
+
+    }
+   }
+   const sortByViewsButton = document.getElementById('sorting-views');
+sortByViewsButton.addEventListener('click', sortVideos);
    handleCatagory();
    handleLoadVideos('1000');
